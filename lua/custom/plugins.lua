@@ -24,14 +24,6 @@ return {
         end,
     },
 
-    -- Automatically close parentheses, quotes, ...
-    {
-        'm4xshen/autoclose.nvim',
-        config = function()
-            require('autoclose').setup()
-        end,
-    },
-
     -- Automatically create closing HTML tag, renames paired tag when typing
     {
         'alvan/vim-closetag',
