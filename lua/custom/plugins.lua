@@ -47,7 +47,10 @@ return {
                     null_ls.builtins.diagnostics.sqlfluff.with {
                         extra_args = { '--dialect', 'oracle' },
                     },
-                    null_ls.builtins.formatting.prettierd,
+                    null_ls.builtins.formatting.prettierd.with {
+                        extra_filetypes = { 'html', 'json', 'yaml', 'markdown', 'typescript' },
+                        env = { PRETTIERD_DEFAULT_CONFIG = vim.fn.expand '~/.config/nvim/utils/prettier/.prettierrc.json' },
+                    },
                     null_ls.builtins.formatting.black,
                 },
             }
@@ -81,5 +84,54 @@ return {
     -- zig
     {
         'ziglang/zig.vim',
+    },
+
+    -- Provide SchemaStore for jsonls
+    {
+        'b0o/schemastore.nvim',
+    },
+
+    -- Preview parsed markdown
+    {
+        'iamcco/markdown-preview.nvim',
+        cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+        build = 'cd app && yarn install',
+        init = function()
+            vim.g.mkdp_filetypes = { 'markdown' }
+        end,
+        ft = { 'markdown' },
+    },
+
+    -- Zen mode
+    {
+        'folke/zen-mode.nvim',
+    },
+
+    -- Highlight current code block by graying out everything else
+    {
+        'folke/twilight.nvim',
+    },
+
+    -- Enhancements for writing prose instead of code
+    -- An example can be seen when a text softwraps in your editor but is not on actually on a different line, Pencil allows you to move your cursor so it makes sense visually
+    {
+        'preservim/vim-pencil',
+    },
+
+    -- Full replacement UI for messages, cmdline and popupmenu
+    {
+        'folke/noice.nvim',
+        event = 'VeryLazy',
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            'MunifTanjim/nui.nvim',
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            'rcarriga/nvim-notify',
+        },
     },
 }
