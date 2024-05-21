@@ -3,10 +3,6 @@ vim.keymap.set('n', '<C-s>', vim.cmd.w, { desc = 'Save' })
 
 vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
 
--- Disable annoying behavior
-vim.keymap.set('n', 'J', '<nop>')
-vim.keymap.set('n', 'K', '<nop>')
-
 -- Move up/down in view mode
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
@@ -28,6 +24,9 @@ vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Sets a mapping to make the current file executable.
 vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true, desc = 'Make current file executable' })
+
+-- Import std in zig lol
+vim.keymap.set('n', '<leader>std', 'iconst std = @import("std");', { desc = 'Insert zig import std statement' })
 
 -- TODO: Find good mapping for this
 -- Sets a mapping to format code using LSP.
