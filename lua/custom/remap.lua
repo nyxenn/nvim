@@ -51,4 +51,6 @@ vim.keymap.set('n', '<leader>std', 'iconst std = @import("std");', { desc = 'Ins
 -- Sets a mapping to open tmux-sessionizer in a new tmux window.
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
+vim.keymap.set('n', 'tw', ':Twilight<enter>', { noremap = false })
+
 return {}
