@@ -134,4 +134,12 @@ return {
             'rcarriga/nvim-notify',
         },
     },
+
+    -- Supermaven AI code completions
+    {
+        'supermaven-inc/supermaven-nvim',
+        config = function()
+            require('supermaven-nvim').setup {}
+        end,
+    },
 }
